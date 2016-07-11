@@ -10,8 +10,8 @@ Ruby 2.2.4 is needed with the bundler gem installed
 
 Install gems
 
-  % bundle
+    % bundle
 
 Run tests
 
-  % bundle exec rspec
+    % bundle exec rspec
