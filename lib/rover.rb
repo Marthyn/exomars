@@ -15,8 +15,8 @@ class Rover
 
   def turn(direction)
     send("turn_#{direction.downcase}")
-  rescue NoMethodException
-
+  rescue NoMethodError
+    raise UnkownDirectionError.new("Direction #{direction} is not a valid direction")
   end
 
   def turn_r
@@ -35,3 +35,5 @@ class Rover
     position[1] += 1
   end
 end
+
+class UnkownDirectionError < RuntimeError; end
