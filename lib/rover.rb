@@ -15,9 +15,10 @@ class Rover
     'E' => 'N'
   }.freeze
 
-  def initialize(position = [0, 0], heading = 'N')
+  def initialize(position = [0, 0], heading = 'N', planet = Planet.new)
     @position = position
     @heading = heading
+    @planet = planet
   end
 
   def turn(direction)
