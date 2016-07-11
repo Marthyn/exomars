@@ -4,7 +4,7 @@ require 'heading'
 require 'coordinates'
 
 class Mission
-  def initialize(input)
-
+  def initialize(lines)
+    
   end
 end
