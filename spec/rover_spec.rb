@@ -7,7 +7,7 @@ describe Rover do
     expect(schiaparelli.position).to eq([0, 0])
   end
 
-  xit "can move around Mars and return a new position" do
+  it "can move around Mars and return a new position" do
     schiaparelli.move
     expect(schiaparelli.position).to eq([0, 1])
   end
