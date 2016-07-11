@@ -1,6 +1,13 @@
 class Rover
   attr_reader :position, :heading
 
+  RIGHT_TURNS = {
+    'N' => 'E',
+    'E' => 'S',
+    'S' => 'W',
+    'W' => 'N'
+  }.freeze
+
   def initialize(position = [0, 0], heading = 'N')
     @position = position
     @heading = heading
@@ -13,7 +20,7 @@ class Rover
   end
 
   def turn_r
-
+    @heading = RIGHT_TURNS[@heading]
   end
 
   def turn_l
