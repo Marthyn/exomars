@@ -15,7 +15,9 @@ class Rover
     case method
     when "M"
       move
-    when "L" || "R"
+    when "L"
+      turn(method)
+    when "R"
       turn(method)
     else
       InvalidInstructionError

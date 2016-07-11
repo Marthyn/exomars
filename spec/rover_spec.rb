@@ -55,6 +55,12 @@ describe Rover do
     expect(default_schiaparelli.heading.to_s).to eq('E')
   end
 
+  it "turns to S when heading is E" do
+    schiaparelli = Rover.new([0, 0], 'E', Planet.new(1, 1))
+    schiaparelli.turn("R")
+    expect(schiaparelli.heading.to_s).to eq("S")
+  end
+
   it "has the correct heading after turning left" do
     default_schiaparelli.turn('L')
     expect(default_schiaparelli.heading.to_s).to eq('W')
@@ -71,6 +77,12 @@ describe Rover do
     expect(default_schiaparelli).to receive(:turn).with('L')
     default_schiaparelli.instruct('L')
   end
+
+  it "can instruct to turn based on a character" do
+    expect(default_schiaparelli).to receive(:turn).with('R')
+    default_schiaparelli.instruct('R')
+  end
+
 
   it "can instruct to move based on the character M" do
     expect(default_schiaparelli).to receive(:move)

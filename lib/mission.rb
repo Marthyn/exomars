@@ -4,24 +4,28 @@ require 'heading'
 require 'coordinates'
 
 class Mission
-  attr_reader :planet, :rovers
+  attr_reader :planet, :rovers, :lines
 
   def initialize(lines)
-    setup_planet(lines)
-    setup_rovers(lines)
-    # run_rovers(lines)
+    @lines = lines
+    setup_planet
+    setup_rovers
+  end
+
+  def start
+    run_rovers
   end
 
   def parse_initial_coordinates(line)
     line.split(" ").map { |n| n.to_i }
   end
 
-  def setup_planet(lines)
+  def setup_planet
     initial_coordinates = parse_initial_coordinates(lines[0])
     @planet = Planet.new(initial_coordinates[0], initial_coordinates[1])
   end
 
-  def setup_rovers(lines)
+  def setup_rovers
     @rovers = []
     rover_coordinates = lines[1].split(" ")
     @rovers << Rover.new([rover_coordinates[0].to_i, rover_coordinates[1].to_i], rover_coordinates[2])
@@ -29,20 +33,22 @@ class Mission
     @rovers << Rover.new([rover_coordinates[0].to_i, rover_coordinates[1].to_i], rover_coordinates[2])
   end
 
-  def run_rovers(lines)
-    lines[4].each_char do |instruction|
+  def run_rovers
+    lines[2].each_char do |instruction|
       @rovers.first.instruct(instruction)
     end
-    lines[5].each_char do |instruction|
+
+    lines[4].each_char do |instruction|
       @rovers.last.instruct(instruction)
     end
   end
 
   def output
+    output = []
     @rovers.each do |rover|
-      puts "#{rover.position[0]} #{rover.position[1]} #{rover.heading.to_s}"
-      puts ""
+      output << "#{rover.position[0]} #{rover.position[1]} #{rover.heading.to_s}"
     end
+    output
   end
 
   def parse_rover_coordinates(line)
