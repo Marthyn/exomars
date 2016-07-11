@@ -67,9 +67,14 @@ describe Rover do
     expect(default_schiaparelli.heading.to_s).to eq('N')
   end
 
-  it "can instruct based on a character" do
-    expect(default_schiaparelli.instruct('L')).to receive(:turn).with('L')
-    expect(default_schiaparelli.instruct('M')).to receive(:move)
+  it "can instruct to turn based on a character" do
+    expect(default_schiaparelli).to receive(:turn).with('L')
+    default_schiaparelli.instruct('L')
+  end
+
+  it "can instruct to move based on the character M" do
+    expect(default_schiaparelli).to receive(:move)
+    default_schiaparelli.instruct('M')
   end
 
   it "cannot turn with an unknown direction" do

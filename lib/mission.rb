@@ -9,7 +9,7 @@ class Mission
   def initialize(lines)
     setup_planet(lines)
     setup_rovers(lines)
-    run_rovers(lines)
+    # run_rovers(lines)
   end
 
   def parse_initial_coordinates(line)

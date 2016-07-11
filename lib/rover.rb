@@ -11,6 +11,17 @@ class Rover
     @coordinates.position
   end
 
+  def instruct(method)
+    case method
+    when "M"
+      move
+    when "L" || "R"
+      turn(method)
+    else
+      InvalidInstructionError
+    end
+  end
+
   def turn(direction)
     turn_method = "turn_#{direction.downcase}"
     raise UnkownDirectionError.new("Direction #{direction} is not a valid direction") unless heading.respond_to?(turn_method)
@@ -23,3 +34,5 @@ class Rover
     @coordinates = new_position
   end
 end
+
+class InvalidInstructionError < RuntimeError; end
