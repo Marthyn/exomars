@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Marthyn/exomars.svg?branch=master)](https://travis-ci.org/Marthyn/exomars)
+
 # ExoMars
 
 This is a coding challenge, some Rovers have to move through a grid on Mars. Named after [ExoMars](https://en.wikipedia.org/wiki/ExoMars)
