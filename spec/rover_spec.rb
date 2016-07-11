@@ -25,6 +25,10 @@ describe Rover do
     expect(default_schiaparelli.heading).to eq('E')
   end
 
+  it "cannot turn with an unknown direction" do
+    expect{ default_schiaparelli.turn('Y') }.to raise_error(UnkownDirectionError)
+  end
+
   xit "has the correct heading after turning left" do
     schiaparelli.turn('R')
     expect(schiaparelli.heading).to eq('W')
