@@ -8,6 +8,13 @@ class Rover
     'W' => 'N'
   }.freeze
 
+  LEFT_TURNS = {
+    'N' => 'W',
+    'W' => 'S',
+    'S' => 'E',
+    'E' => 'N'
+  }.freeze
+
   def initialize(position = [0, 0], heading = 'N')
     @position = position
     @heading = heading
@@ -24,7 +31,7 @@ class Rover
   end
 
   def turn_l
-
+    @heading = LEFT_TURNS[@heading]
   end
 
   def move
