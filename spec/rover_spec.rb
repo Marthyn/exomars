@@ -1,19 +1,23 @@
 require 'mission'
 
 describe Rover do
-  let(:schiaparelli) { Rover.new }
+  let(:default_schiaparelli) { Rover.new }
 
   it "has a default position" do
-    expect(schiaparelli.position).to eq([0, 0])
+    expect(default_schiaparelli.position).to eq([0, 0])
   end
 
-  it "can move around Mars and return a new position" do
-    schiaparelli.move
-    expect(schiaparelli.position).to eq([0, 1])
+  it "has a default heading" do
+    expect(default_schiaparelli.heading).to eq('N')
   end
 
-  xit "has a default heading" do
-    expect(schiaparelli.heading).to eq('N')
+  it "can move north and return the correct position" do
+    default_schiaparelli.move
+    expect(default_schiaparelli.position).to eq([0, 1])
+  end
+
+  it "can't move west when x = 0" do
+
   end
 
   xit "has the correct heading after turning right" do
