@@ -1,5 +1,5 @@
 class Rover
-  attr_reader :position, :heading
+  attr_reader :position, :heading, :planet
 
   RIGHT_TURNS = {
     'N' => 'E',
