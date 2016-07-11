@@ -22,10 +22,18 @@ class Rover
   end
 
   def turn(direction)
-    send("turn_#{direction.downcase}")
-  rescue NoMethodError
-    raise UnkownDirectionError.new("Direction #{direction} is not a valid direction")
+    turn_method = "turn_#{direction.downcase}"
+    raise UnkownDirectionError.new("Direction #{direction} is not a valid direction") unless respond_to?(turn_method)
+    send(turn_method)
   end
+
+  def move
+    new_position = send("move_#{heading.downcase}")
+    raise OutOfBoundsError.new("Can't move outside of #{planet.bounds}, current position is #{position}") if out_of_bounds?(new_position)
+    @position = new_position
+  end
+
+  private
 
   def turn_r
     @heading = RIGHT_TURNS[@heading]
@@ -35,11 +43,6 @@ class Rover
     @heading = LEFT_TURNS[@heading]
   end
 
-  def move
-    new_position = send("move_#{heading.downcase}")
-    raise OutOfBoundsError if out_of_bounds?(new_position)
-    @position = new_position
-  end
 
   def move_n
     [position[0], position[1] + 1]
