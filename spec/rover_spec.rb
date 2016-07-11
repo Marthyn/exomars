@@ -20,7 +20,7 @@ describe Rover do
 
   end
 
-  xit "has the correct heading after turning right" do
+  it "has the correct heading after turning right" do
     schiaparelli.turn('R')
     expect(schiaparelli.heading).to eq('E')
   end
