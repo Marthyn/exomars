@@ -43,6 +43,13 @@ describe Rover do
     expect{ default_schiaparelli.move }.to raise_error(InvalidMoveError)
   end
 
+  it "can't move out of the maximum bounds of the planet" do
+    schiaparelli = Rover.new([0, 0], 'E', Planet.new(1, 1))
+    schiaparelli.move
+    expect(schiaparelli.position).to eq [1, 0]
+    expect{ schiaparelli.move }.to raise_error(OutOfBoundsException)
+  end
+
   it "has the correct heading after turning right" do
     default_schiaparelli.turn('R')
     expect(default_schiaparelli.heading).to eq('E')
