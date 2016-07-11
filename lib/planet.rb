@@ -1,5 +1,5 @@
 class Planet
-  attr_reader :bounds
+  attr_reader :max_x, :max_y
 
   def initialize(x = 5, y = 5)
     @max_x = x
@@ -7,6 +7,12 @@ class Planet
   end
 
   def bounds
-    @bounds ||= [@max_x, @max_y]
+    @bounds ||= Coordinates.new(max_x, max_y)
+  end
+
+  def out_of_bounds?(coordinates)
+    coordinates.x < 0 || coordinates.y < 0 || coordinates.x > bounds.x || coordinates.y > bounds.y
   end
 end
+
+class OutOfBoundsError < RuntimeError; end

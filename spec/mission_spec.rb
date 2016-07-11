@@ -8,8 +8,6 @@ describe Mission do
   end
 
   it "can initialize the planet with a bounded area based on given input" do
-    Mission.new(
-
-    )
+    Mission.new("")
   end
 end

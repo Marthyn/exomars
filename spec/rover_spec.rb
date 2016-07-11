@@ -12,7 +12,7 @@ describe Rover do
   end
 
   it "has a default heading" do
-    expect(default_schiaparelli.heading).to eq('N')
+    expect(default_schiaparelli.heading.to_s).to eq('N')
   end
 
   it "can move north and return the correct position" do
@@ -52,19 +52,19 @@ describe Rover do
 
   it "has the correct heading after turning right" do
     default_schiaparelli.turn('R')
-    expect(default_schiaparelli.heading).to eq('E')
+    expect(default_schiaparelli.heading.to_s).to eq('E')
   end
 
   it "has the correct heading after turning left" do
     default_schiaparelli.turn('L')
-    expect(default_schiaparelli.heading).to eq('W')
+    expect(default_schiaparelli.heading.to_s).to eq('W')
   end
 
   it "has the same heading after turning 4 times" do
     4.times do
       default_schiaparelli.turn('L')
     end
-    expect(default_schiaparelli.heading).to eq('N')
+    expect(default_schiaparelli.heading.to_s).to eq('N')
   end
 
   it "cannot turn with an unknown direction" do
