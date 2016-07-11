@@ -35,10 +35,8 @@ class Mission
   end
 
   def output
-    output = []
-    @rovers.each do |rover|
-      output << "#{rover.position[0]} #{rover.position[1]} #{rover.heading.to_s}"
+    @rovers.map do |rover|
+      "#{rover.position[0]} #{rover.position[1]} #{rover.heading.to_s}"
     end
-    output
   end
 end
