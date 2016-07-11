@@ -17,7 +17,8 @@ describe Rover do
   end
 
   it "can't move west when x = 0" do
-
+    default_schiaparelli.turn('L')
+    expect{ default_schiaparelli.move }.to raise_error(InvalidMoveError)
   end
 
   it "has the correct heading after turning right" do
