@@ -21,8 +21,8 @@ describe Rover do
   end
 
   it "has the correct heading after turning right" do
-    schiaparelli.turn('R')
-    expect(schiaparelli.heading).to eq('E')
+    default_schiaparelli.turn('R')
+    expect(default_schiaparelli.heading).to eq('E')
   end
 
   xit "has the correct heading after turning left" do

@@ -6,6 +6,20 @@ class Rover
     @heading = heading
   end
 
+  def turn(direction)
+    send("turn_#{direction.downcase}")
+  rescue NoMethodException
+
+  end
+
+  def turn_r
+
+  end
+
+  def turn_l
+
+  end
+
   def move
     send("move_#{heading.downcase}")
   end
