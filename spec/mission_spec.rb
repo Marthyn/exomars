@@ -19,4 +19,7 @@ describe Mission do
     mission = Mission.new(lines)
     expect(mission.planet.bounds.position).to eq([5, 5])
   end
+
+  it "sets up the rovers with initial positions" do
+  end
 end
