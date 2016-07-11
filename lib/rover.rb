@@ -35,12 +35,27 @@ class Rover
   end
 
   def move
-    send("move_#{heading.downcase}")
+    new_position = send("move_#{heading.downcase}")
+    raise InvalidMoveError if (new_position[0] < 0 || new_position[1] < 0)
+    @position = new_position
   end
 
   def move_n
-    position[1] += 1
+    [position[0], position[1] + 1]
+  end
+
+  def move_w
+    [position[0] - 1, position[1]]
+  end
+
+  def move_s
+    [position[0], position[1] - 1]
+  end
+
+  def move_e
+    [position[0] + 1, position[1]]
   end
 end
 
 class UnkownDirectionError < RuntimeError; end
+class InvalidMoveError < RuntimeError; end
