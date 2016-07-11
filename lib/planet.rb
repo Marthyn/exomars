@@ -1,7 +1,7 @@
 class Planet
   attr_reader :bounds
 
-  def initialize(x = 1, y = 1)
+  def initialize(x = 5, y = 5)
     @max_x = x
     @max_y = y
   end

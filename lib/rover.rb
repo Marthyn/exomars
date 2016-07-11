@@ -37,7 +37,7 @@ class Rover
 
   def move
     new_position = send("move_#{heading.downcase}")
-    raise InvalidMoveError if (new_position[0] < 0 || new_position[1] < 0)
+    raise OutOfBoundsError if out_of_bounds?(new_position)
     @position = new_position
   end
 
@@ -56,7 +56,11 @@ class Rover
   def move_e
     [position[0] + 1, position[1]]
   end
+
+  def out_of_bounds?(new_position)
+    new_position[0] < 0 || new_position[1] < 0 || new_position[0] > planet.bounds[0] || new_position[1] > planet.bounds[1]
+  end
 end
 
 class UnkownDirectionError < RuntimeError; end
-class InvalidMoveError < RuntimeError; end
+class OutOfBoundsError < RuntimeError; end

@@ -40,14 +40,14 @@ describe Rover do
 
   it "can't move west when x = 0" do
     default_schiaparelli.turn('L')
-    expect{ default_schiaparelli.move }.to raise_error(InvalidMoveError)
+    expect{ default_schiaparelli.move }.to raise_error(OutOfBoundsError)
   end
 
   it "can't move out of the maximum bounds of the planet" do
     schiaparelli = Rover.new([0, 0], 'E', Planet.new(1, 1))
     schiaparelli.move
     expect(schiaparelli.position).to eq [1, 0]
-    expect{ schiaparelli.move }.to raise_error(OutOfBoundsException)
+    expect{ schiaparelli.move }.to raise_error(OutOfBoundsError)
   end
 
   it "has the correct heading after turning right" do
