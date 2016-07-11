@@ -13,27 +13,6 @@ class Mission
   end
 
   def start
-    run_rovers
-  end
-
-  def parse_initial_coordinates(line)
-    line.split(" ").map { |n| n.to_i }
-  end
-
-  def setup_planet
-    initial_coordinates = parse_initial_coordinates(lines[0])
-    @planet = Planet.new(initial_coordinates[0], initial_coordinates[1])
-  end
-
-  def setup_rovers
-    @rovers = []
-    rover_coordinates = lines[1].split(" ")
-    @rovers << Rover.new([rover_coordinates[0].to_i, rover_coordinates[1].to_i], rover_coordinates[2])
-    rover_coordinates = lines[3].split(" ")
-    @rovers << Rover.new([rover_coordinates[0].to_i, rover_coordinates[1].to_i], rover_coordinates[2])
-  end
-
-  def run_rovers
     lines[2].each_char do |instruction|
       @rovers.first.instruct(instruction)
     end
@@ -43,15 +22,23 @@ class Mission
     end
   end
 
+  def setup_planet
+    initial_coordinates = lines[0].split(" ").map { |n| n.to_i }
+    @planet = Planet.new(initial_coordinates[0], initial_coordinates[1])
+  end
+
+  def setup_rovers
+    @rovers = [1, 3].map do |i|
+      coordinates = lines[i].split(" ")
+      Rover.new([coordinates[0].to_i, coordinates[1].to_i], coordinates[2])
+    end
+  end
+
   def output
     output = []
     @rovers.each do |rover|
       output << "#{rover.position[0]} #{rover.position[1]} #{rover.heading.to_s}"
     end
     output
-  end
-
-  def parse_rover_coordinates(line)
-    line.split(" ")
   end
 end
