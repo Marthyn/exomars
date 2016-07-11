@@ -20,7 +20,7 @@ class Rover
     when "R"
       turn(method)
     else
-      InvalidInstructionError
+      InvalidInstructionError.new("#{method} is an invalid instruction")
     end
   end
 
