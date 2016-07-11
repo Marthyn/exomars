@@ -3,6 +3,10 @@ require 'mission'
 describe Rover do
   let(:default_schiaparelli) { Rover.new }
 
+  it "initializes with a planet" do
+    expect(default_schiaparelli.planet).to be_a(Planet)
+  end
+
   it "has a default position" do
     expect(default_schiaparelli.position).to eq([0, 0])
   end
